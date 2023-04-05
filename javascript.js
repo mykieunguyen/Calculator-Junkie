@@ -1,21 +1,11 @@
 // Calculator Functions 
 // Add
-function add (a, b) {
-    return a + b;
-}
-
+const add = (a, b) =>  a + b;
 // Subtract 
-function subtract (a, b) {
-    return a - b;
-}
+const subtract = (a, b) => a -b; 
 
 // multiply 
-function multiply (a,b) {
-    return a * b;
-}
-
+const multiply = (a,b) => a * b;
 //divide 
-function divide (a, b) {
-    return a/b;
-}
+const divide = (a, b) => a / b;
 
