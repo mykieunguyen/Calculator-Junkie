@@ -10,22 +10,23 @@ const multiply = (a,b) => a * b;
 const divide = (a, b) => a / b;
 
 // Calculator operation variable declartion 
-const firstNumber;
-const secondNumber;
-const operator; 
+// const firstNumber;
+// const secondNumber;
+// const operator; 
 
 // operate function 
 const operate = (a,b,operator) => {
     if (operator === 'add') {
-        add(a,b);
+        return add(a,b);
     }
     else if (operator === 'subtract') {
-        subtract(a,b);
+        return subtract(a,b);
     }
     else if (operator === 'multiply') {
-        multiply(a,b);
+        return multiply(a,b);
     }
     else if (operator === 'divide') {
-        divide(a,b);
+       return divide(a,b);
     }
 }
+
