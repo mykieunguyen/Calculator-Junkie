@@ -47,12 +47,6 @@ const clearScreen = () => {
     }) 
 }
 
-
-
-
-
-
-
-
 // Running Calculator
 clearScreen();
+
