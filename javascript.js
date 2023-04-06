@@ -30,3 +30,29 @@ const operate = (a,b,operator) => {
     }
 }
 
+// Selecting for elements in the DOM
+let buttons = document.querySelectorAll('button[data-value]');
+let clear = document.getElementById('clearButton');
+
+let calculatorButtonContainer = document.querySelector('.calculatorContainer');
+let calculatorDisplay = document.querySelector('calculatorScreen');
+let calculatorTop = document.getElementById('topCalc');
+let calculatorBottom = document.getElementById('bottomCalc');
+
+// Function to Clear Screen 
+const clearScreen = () => {
+    clear.addEventListener('click', () => {
+        calculatorBottom.textContent = '';
+        calculatorTop.textContent = '';
+    }) 
+}
+
+
+
+
+
+
+
+
+// Running Calculator
+clearScreen();
