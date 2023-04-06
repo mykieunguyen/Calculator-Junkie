@@ -12,42 +12,42 @@
         <!-- Calculator Screen -->
         <div class="top">
             <div class="calculatorScreen">
-                <p>calculation</p>
-                <p>current number</p>
+                <p id="topCalc"></p>
+                <h3 id="bottomCalc"></h3>
             </div>
         </div>
 
         <!-- Clear & Delete Button -->
         <div class="middle">
-            <button id="clearButton">AC</button>
-            <button id="deleteButton">DEL</button>
+            <button class="btn" id="clearButton">AC</button>
+            <button class="btn" id="deleteButton">DEL</button>
         </div>
 
         <!-- Calculator Buttons -->
         <div class="bottom">
             <div class="rowOne">
-                <button>7</button>
-                <button>8</button>
-                <button>9</button>
-                <button id="divide">÷</button>
+                <button class="btn dataNumber">7</button>
+                <button class="btn dataNumber">8</button>
+                <button class="btn dataNumber">9</button>
+                <button class="btn dataOperator">÷</button>
             </div>
             <div class="rowTwo">
-                <button>4</button>
-                <button>5</button>
-                <button>6</button>
-                <button id="multiply">x</button>
+                <button class="btn dataNumber">4</button>
+                <button class="btn dataNumber">5</button>
+                <button class="btn dataNumber">6</button>
+                <button class="btn dataOperator">x</button>
             </div>
             <div class="rowThree">
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button id="subtract">-</button>
+                <button class="btn dataNumber">1</button>
+                <button class="btn dataNumber">2</button>
+                <button class="btn dataNumber">3</button>
+                <button class="btn dataOperator">-</button>
             </div>
             <div class="rowFour">
-                <button id="dot">.</button>
-                <button>0</button>
-                <button id="equals">=</button>
-                <button id="add">+</button>
+                <button class="btn dotButton">.</button>
+                <button class="btn dataNumber">0</button>
+                <button class="btn" id="equalsButton">=</button>
+                <button class="btn dataOperator">+</button>
             </div>
             
         </div>

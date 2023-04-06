@@ -26,12 +26,20 @@ body {
     border: 2px solid black;
     border-radius: 10px;
     box-shadow:  inset 2px 2px 2px black;
+    flex-shrink: 0;
 
 }
 
 .calculatorScreen {
-    padding: 10px;
+    padding-right: 10px;
     text-align: end;
+}
+
+#bottomCalc {
+    height: 80%;
+    margin: 0px;
+    font-size: 40px;
+    font-weight: normal;
 }
 
 .middle {
@@ -78,6 +86,6 @@ button {
     border-radius: 5px;
 }
 
-#divide, #multiply, #add, #subtract, #dot, #equals {
+.dataOperator, .dotButton, #equalsButton {
     background-color: #f4e4da;
 }

@@ -10,9 +10,9 @@ const multiply = (a,b) => a * b;
 const divide = (a, b) => a / b;
 
 // Calculator operation variable declartion 
-// const firstNumber;
-// const secondNumber;
-// const operator; 
+let firstNumber;
+let secondNumber;
+let operator; 
 
 // operate function 
 const operate = (a,b,operator) => {
