@@ -47,6 +47,32 @@ const clearScreen = () => {
     }) 
 }
 
+// Function to Function to change calculator screen display 
+const determineType = (event,value) => {
+    // if a number is clicked
+       if (event.target.className === 'btn dataNumber') {
+           calculatorTop.textContent += value;
+   
+           if (numberArray.length === 0) {
+               numberArray.push(value);
+               calculatorBottom.textContent = value;
+           }
+           else {
+               numberArray.push(value);
+               calculatorBottom.textContent += value;
+           }
+   
+       }
+       
+       // if an operator is clicked
+       else if (event.target.className === 'btn dataOperator') {
+           calculatorTop.textContent +=  ` ${value} `;
+           numberArray = [];
+       }
+   }
+
+
+
 // Running Calculator
 clearScreen();
-
+buttons.forEach(btn => btn.addEventListener('click', eventHandler));
