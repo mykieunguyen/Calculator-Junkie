@@ -29,6 +29,7 @@ const operate = (a,b,operator) => {
 let buttons = document.querySelectorAll('button[data-value]');
 let clear = document.getElementById('clearButton');
 let equals = document.getElementById('equalsButton');
+let delButton = document.getElementById('deleteButton');
 
 let calculatorButtonContainer = document.querySelector('.calculatorContainer');
 let calculatorDisplay = document.querySelector('calculatorScreen');
@@ -52,6 +53,30 @@ const clearScreen = () => {
         operator = '';
         evalArray = ['', '', ''];
     }) 
+}
+
+// Function to Delete last Input 
+const delInput = () => {
+    delButton.addEventListener('click', () => {
+        playSound();
+        console.log(evalArray);
+
+        for (let i = evalArray.length-1; i >= 0; i--) {
+            if (evalArray[i] !== '') {
+                evalArray[i] = '';
+                break;
+            }
+        }
+        firstOperand = evalArray[0].split('');
+        operator = evalArray[1];
+        secondOperand = evalArray[2].split('');
+
+        changeTop(evalArray.join(' '));
+        changeBottom('');
+        // console.log(firstOperand);
+        // console.log(operator);
+        // console.log(secondOperand);
+    })
 }
 
 // Function to obtain first operand, second operand, and calculator
@@ -90,7 +115,8 @@ const determineValue = (event, value) => {
                 secondOperand = [];
                 evalArray = [];
                 evalArray[1] = value;
-                evalArray[0] = answer;
+                evalArray[0] = answer.toString();
+                evalArray[2] = '';
                 operator = value;
                 firstOperand.push(answer);
 
@@ -135,6 +161,7 @@ const eventHandler = event => {
 
 // Running Calculator
 clearScreen();
+delInput();
 buttons.forEach(btn => btn.addEventListener('click', eventHandler));
 equals.addEventListener('click', calcExpression)
 
