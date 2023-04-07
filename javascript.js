@@ -54,8 +54,6 @@ const clearScreen = () => {
     }) 
 }
 
-
-
 // Function to obtain first operand, second operand, and calculator
 const determineValue = (event, value) => {
     // if a number is clicked
@@ -65,35 +63,53 @@ const determineValue = (event, value) => {
             if (evalArray[1] === '') {
                 firstOperand.push(value);
                 evalArray[0] = firstOperand.join('');
+                changeBottom(firstOperand.join(''));
+                changeTop(evalArray.join(' '));
+
             }
             // determine second operand
             else {
                 secondOperand.push(value);
                 evalArray[2] = secondOperand.join('');
+                changeBottom(secondOperand.join(''));
+                changeTop(evalArray.join(' '));
             }
        }
        
        // if an operator is clicked
        else if (event.target.className === 'btn dataOperator') {
-            operator = value;
-            evalArray[1] = value;
+            if (evalArray[1] === '') {
+                operator = value;
+                evalArray[1] = value;
+                changeTop(evalArray.join(' '));
+            }
+            else {
+                let answer = calcExpression();
+                
+                firstOperand= [];
+                secondOperand = [];
+                evalArray = [];
+                evalArray[1] = value;
+                evalArray[0] = answer;
+                operator = value;
+                firstOperand.push(answer);
+
+                changeBottom(answer);   
+                changeTop(evalArray.join(' '));
+            }
        }
-       // Render value onto calculator
-       changeDisplay(evalArray.join(' '), firstOperand.join(''), secondOperand.join('')); 
    }
 
 
 // Function to render value on screen
-const changeDisplay = (calcTopValue, firstNumber, SecondNumber) => {
-    if (evalArray[2] === '') {
+    // Change top Display
+const changeTop = (calcTopValue) => {
         calculatorTop.textContent = calcTopValue;
-        calculatorBottom.textContent = firstNumber;
-    }
-    else {
-        calculatorTop.textContent = calcTopValue;
-        calculatorBottom.textContent = SecondNumber;
-    }
+   }
 
+   // Change bottom Display 
+const changeBottom = (value) => {
+        calculatorBottom.textContent = value;
 }
 
 // Function to calculate expression 
@@ -105,6 +121,7 @@ const calcExpression = () => {
 
     let answer = operate(a, b, operatorOne);
     calculatorBottom.textContent = answer;
+    return answer;
 }
 
 
