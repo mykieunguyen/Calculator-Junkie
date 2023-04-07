@@ -34,19 +34,25 @@ let calculatorDisplay = document.querySelector('calculatorScreen');
 let calculatorTop = document.getElementById('topCalc');
 let calculatorBottom = document.getElementById('bottomCalc');
 
+// Variable Declarations
+let firstOperand = [''];
+let secondOperand = [''];
+let operator = '';
+let evalArray = ['', '', ''];
+
 // Function to Clear Screen 
 const clearScreen = () => {
     clear.addEventListener('click', () => {
         calculatorBottom.textContent = '';
         calculatorTop.textContent = '';
+        firstOperand = [''];
+        secondOperand = [''];
+        operator = '';
+        evalArray = ['', '', ''];
     }) 
 }
 
-// Variable Declarations
-let firstOperand = [];
-let secondOperand = [];
-let operator = '';
-let evalArray = ['', '', ''];
+
 
 // Function to obtain first operand, second operand, and calculator
 const determineValue = (event, value) => {
@@ -77,7 +83,7 @@ const determineValue = (event, value) => {
 
 // Function to render value on screen
 const changeDisplay = (calcTopValue, firstNumber, SecondNumber) => {
-    if (evalArray[2] === '') {
+    if (secondOperand[0] === '') {
         calculatorTop.textContent = calcTopValue;
         calculatorBottom.textContent = firstNumber;
     }
