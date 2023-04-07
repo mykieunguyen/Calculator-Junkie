@@ -90,7 +90,6 @@ const determineValue = (event, value) => {
                 evalArray[0] = firstOperand.join('');
                 changeBottom(firstOperand.join(''));
                 changeTop(evalArray.join(' '));
-
             }
             // determine second operand
             else {
@@ -141,11 +140,12 @@ const changeBottom = (value) => {
 // Function to calculate expression 
 const calcExpression = () => {
     playSound();
-    let a = parseInt(firstOperand.join(''));
-    let b = parseInt(secondOperand.join(''));
+    let a = parseFloat(firstOperand.join(''));
+    let b = parseFloat(secondOperand.join(''));
     let operatorOne = operator;
 
     let answer = operate(a, b, operatorOne);
+    answer = Math.round(answer * 1000) / 1000;
     calculatorBottom.textContent = answer;
     return answer;
 }
