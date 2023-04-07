@@ -9,11 +9,6 @@ const multiply = (a,b) => a * b;
 //divide 
 const divide = (a, b) => a / b;
 
-// Calculator operation variable declartion 
-let firstNumber;
-let secondNumber;
-let operator; 
-
 // operate function 
 const operate = (a,b,operator) => {
     if (operator === 'add') {
@@ -48,40 +43,49 @@ const clearScreen = () => {
 }
 
 // Variable Declarations
-let numberArray = [];
+let firstOperand = [];
+let secondOperand = [];
+let operator = '';
 let evalArray = ['', '', ''];
 
-// Function to Function to change calculator screen display 
+// Function to obtain first operand, second operand, and calculator
 const determineValue = (event, value) => {
     // if a number is clicked
        if (event.target.className === 'btn dataNumber') {
-            numberArray.push(value);
         
             // determine first operand 
             if (evalArray[1] === '') {
-                evalArray[0] = numberArray.join('');
+                firstOperand.push(value);
+                evalArray[0] = firstOperand.join('');
             }
             // determine second operand
             else {
-                evalArray[2] = numberArray.join('');
+                secondOperand.push(value);
+                evalArray[2] = secondOperand.join('');
             }
        }
        
        // if an operator is clicked
        else if (event.target.className === 'btn dataOperator') {
+            operator = value;
             evalArray[1] = value;
-            numberArray = [];
        }
-
        // Render value onto calculator
-       changeDisplay(evalArray.join(' '), numberArray.join('')); 
+       changeDisplay(evalArray.join(' '), firstOperand.join(''), secondOperand.join('')); 
    }
 
 
 // Function to render value on screen
-const changeDisplay = (calcTopValue, calcBotValue) => {
-    calculatorTop.textContent = calcTopValue;
-    calculatorBottom.textContent = calcBotValue;
+const changeDisplay = (calcTopValue, firstNumber, SecondNumber) => {
+    if (evalArray[2] === '') {
+        calculatorTop.textContent = calcTopValue;
+        calculatorBottom.textContent = firstNumber;
+    }
+    else {
+        calculatorTop.textContent = calcTopValue;
+        calculatorBottom.textContent = SecondNumber;
+    }
+
 }
 
 
