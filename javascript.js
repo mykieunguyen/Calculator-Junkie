@@ -47,32 +47,52 @@ const clearScreen = () => {
     }) 
 }
 
+// Variable Declarations
+let numberArray = [];
+let evalArray = ['', '', ''];
+
 // Function to Function to change calculator screen display 
-const determineType = (event,value) => {
+const determineValue = (event, value) => {
     // if a number is clicked
        if (event.target.className === 'btn dataNumber') {
-           calculatorTop.textContent += value;
-   
-           if (numberArray.length === 0) {
-               numberArray.push(value);
-               calculatorBottom.textContent = value;
-           }
-           else {
-               numberArray.push(value);
-               calculatorBottom.textContent += value;
-           }
-   
+            numberArray.push(value);
+        
+            // determine first operand 
+            if (evalArray[1] === '') {
+                evalArray[0] = numberArray.join('');
+            }
+            // determine second operand
+            else {
+                evalArray[2] = numberArray.join('');
+            }
        }
        
        // if an operator is clicked
        else if (event.target.className === 'btn dataOperator') {
-           calculatorTop.textContent +=  ` ${value} `;
-           numberArray = [];
+            evalArray[1] = value;
+            numberArray = [];
        }
+
+       // Render value onto calculator
+       changeDisplay(evalArray.join(' '), numberArray.join('')); 
    }
 
 
+// Function to render value on screen
+const changeDisplay = (calcTopValue, calcBotValue) => {
+    calculatorTop.textContent = calcTopValue;
+    calculatorBottom.textContent = calcBotValue;
+}
+
+
+// Function to log calculator valriables
+const eventHandler = event => {
+    const value = event.target.attributes['data-value'].nodeValue;
+    determineValue(event, value);
+}
 
 // Running Calculator
 clearScreen();
 buttons.forEach(btn => btn.addEventListener('click', eventHandler));
+
+
