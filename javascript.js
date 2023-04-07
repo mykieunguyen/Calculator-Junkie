@@ -11,16 +11,16 @@ const divide = (a, b) => a / b;
 
 // operate function 
 const operate = (a,b,operator) => {
-    if (operator === 'add') {
+    if (operator === '+') {
         return add(a,b);
     }
-    else if (operator === 'subtract') {
+    else if (operator === '-') {
         return subtract(a,b);
     }
-    else if (operator === 'multiply') {
+    else if (operator === 'x') {
         return multiply(a,b);
     }
-    else if (operator === 'divide') {
+    else if (operator === '/') {
        return divide(a,b);
     }
 }
@@ -28,6 +28,7 @@ const operate = (a,b,operator) => {
 // Selecting for elements in the DOM
 let buttons = document.querySelectorAll('button[data-value]');
 let clear = document.getElementById('clearButton');
+let equals = document.getElementById('equalsButton');
 
 let calculatorButtonContainer = document.querySelector('.calculatorContainer');
 let calculatorDisplay = document.querySelector('calculatorScreen');
@@ -35,8 +36,8 @@ let calculatorTop = document.getElementById('topCalc');
 let calculatorBottom = document.getElementById('bottomCalc');
 
 // Variable Declarations
-let firstOperand = [''];
-let secondOperand = [''];
+let firstOperand = [];
+let secondOperand = [];
 let operator = '';
 let evalArray = ['', '', ''];
 
@@ -45,8 +46,8 @@ const clearScreen = () => {
     clear.addEventListener('click', () => {
         calculatorBottom.textContent = '';
         calculatorTop.textContent = '';
-        firstOperand = [''];
-        secondOperand = [''];
+        firstOperand = [];
+        secondOperand = [];
         operator = '';
         evalArray = ['', '', ''];
     }) 
@@ -83,7 +84,7 @@ const determineValue = (event, value) => {
 
 // Function to render value on screen
 const changeDisplay = (calcTopValue, firstNumber, SecondNumber) => {
-    if (secondOperand[0] === '') {
+    if (evalArray[2] === '') {
         calculatorTop.textContent = calcTopValue;
         calculatorBottom.textContent = firstNumber;
     }
@@ -94,6 +95,15 @@ const changeDisplay = (calcTopValue, firstNumber, SecondNumber) => {
 
 }
 
+// Function to calculate expression 
+const calcExpression = () => {
+    let a = parseInt(firstOperand.join(''));
+    let b = parseInt(secondOperand.join(''));
+    let operatorOne = operator;
+
+    let answer = operate(a, b, operatorOne);
+    calculatorBottom.textContent = answer;
+}
 
 // Function to log calculator valriables
 const eventHandler = event => {
@@ -104,5 +114,5 @@ const eventHandler = event => {
 // Running Calculator
 clearScreen();
 buttons.forEach(btn => btn.addEventListener('click', eventHandler));
-
+equals.addEventListener('click', calcExpression)
 
