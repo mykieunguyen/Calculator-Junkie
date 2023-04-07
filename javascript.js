@@ -44,6 +44,7 @@ let evalArray = ['', '', ''];
 // Function to Clear Screen 
 const clearScreen = () => {
     clear.addEventListener('click', () => {
+        playSound();
         calculatorBottom.textContent = '';
         calculatorTop.textContent = '';
         firstOperand = [];
@@ -97,6 +98,7 @@ const changeDisplay = (calcTopValue, firstNumber, SecondNumber) => {
 
 // Function to calculate expression 
 const calcExpression = () => {
+    playSound();
     let a = parseInt(firstOperand.join(''));
     let b = parseInt(secondOperand.join(''));
     let operatorOne = operator;
@@ -105,8 +107,11 @@ const calcExpression = () => {
     calculatorBottom.textContent = answer;
 }
 
+
+
 // Function to log calculator valriables
 const eventHandler = event => {
+    playSound();
     const value = event.target.attributes['data-value'].nodeValue;
     determineValue(event, value);
 }
@@ -116,3 +121,8 @@ clearScreen();
 buttons.forEach(btn => btn.addEventListener('click', eventHandler));
 equals.addEventListener('click', calcExpression)
 
+// Function to play sound on button click 
+function playSound() {
+    let sound = new Audio('mixkit-on-or-off-light-switch-tap-2585.wav');
+    sound.play();
+}
