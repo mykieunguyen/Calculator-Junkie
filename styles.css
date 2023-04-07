@@ -86,6 +86,9 @@ button {
     border-radius: 5px;
 }
 
+button:hover {
+    filter: brightness(110%);
+}
 
 button:active {
   box-shadow: 0 5px #666;
