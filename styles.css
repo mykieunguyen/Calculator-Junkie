@@ -1,14 +1,51 @@
+/* Fonts */
+@font-face{
+    font-family: spacetime;
+    src: url(spacetime-regular.ttf);
+}
+
 body {
     width: 100vw;
     height: 100vh;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f6efe8;
 }
+
+/* Header */
+.header {
+    width: 100vw;
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-top: -25px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.navBar {
+    width: 100%;
+    background-color: #f4d6d6;
+    height: 22px;
+}
+
+#title {
+    font-family: spacetime;
+    font-size: 60px;
+    margin: 10px auto;
+    color: #cf8b06
+
+    ;
+}
+
+
+/* Calculator */
 .calculatorContainer {
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin-top: 200px;
+    margin-top: -150px;
     width: 310px;
     height: 400px;
     background-color: #f4d6d6;
