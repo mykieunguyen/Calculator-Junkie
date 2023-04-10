@@ -3,6 +3,10 @@
     font-family: spacetime;
     src: url(spacetime-regular.ttf);
 }
+@font-face {
+    font-family: calculator;
+    src: url(Calculator.ttf);
+}
 
 body {
     width: 100vw;
@@ -64,11 +68,14 @@ body {
     border-radius: 10px;
     box-shadow:  inset 2px 2px 2px black;
     flex-shrink: 0;
+
 }
 
 .calculatorScreen {
     padding-right: 10px;
     text-align: end;
+    font-family: calculator;
+
 }
 
 #bottomCalc {
@@ -132,8 +139,6 @@ button {
     background-color: #f1d4ca;
     box-shadow: 1px 2px 2px black;
     border-radius: 5px;
-    /* filter: brightness(115%); */
-    
 }
 
 button:hover {
