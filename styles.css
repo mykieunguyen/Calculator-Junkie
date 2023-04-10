@@ -156,3 +156,14 @@ button:active {
 
 }
 
+/* Footer */
+.footer {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+}
+
+.github {
+    width: 20px;
+    height: 20px;
+}
